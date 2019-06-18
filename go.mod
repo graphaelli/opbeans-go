@@ -11,6 +11,7 @@ require (
 	github.com/pkg/errors v0.8.1
 	github.com/sirupsen/logrus v1.3.0
 	github.com/stretchr/testify v1.3.0
+	github.com/ugorji/go/codec v1.1.5-pre // indirect
 	go.elastic.co/apm v1.2.0
 	go.elastic.co/apm/module/apmgin v1.2.0
 	go.elastic.co/apm/module/apmhttp v1.2.0

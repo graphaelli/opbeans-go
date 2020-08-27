@@ -16,6 +16,7 @@ require (
 	github.com/mattn/go-isatty v0.0.8 // indirect
 	github.com/mattn/go-sqlite3 v1.11.0
 	github.com/pkg/errors v0.8.1
+	github.com/prometheus/client_golang v0.9.2
 	github.com/sirupsen/logrus v1.4.2
 	github.com/stretchr/testify v1.4.0
 	github.com/ugorji/go v1.1.7 // indirect
@@ -23,5 +24,6 @@ require (
 	go.elastic.co/apm/module/apmgin v1.8.0
 	go.elastic.co/apm/module/apmhttp v1.8.0
 	go.elastic.co/apm/module/apmlogrus v1.8.0
+	go.elastic.co/apm/module/apmprometheus v1.8.0
 	go.elastic.co/apm/module/apmsql v1.8.0
 )

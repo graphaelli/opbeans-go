@@ -24,12 +24,14 @@ import (
 	"github.com/gomodule/redigo/redis"
 	"github.com/jmoiron/sqlx"
 	"github.com/pkg/errors"
+	"github.com/prometheus/client_golang/prometheus"
 	"github.com/sirupsen/logrus"
 
 	"go.elastic.co/apm"
 	"go.elastic.co/apm/module/apmgin"
 	"go.elastic.co/apm/module/apmhttp"
 	"go.elastic.co/apm/module/apmlogrus"
+	"go.elastic.co/apm/module/apmprometheus"
 	"go.elastic.co/apm/module/apmsql"
 )
 
@@ -72,6 +74,10 @@ func main() {
 	// Instrument the default HTTP transport, so that outgoing
 	// (reverse-proxy) requests are reported as spans.
 	http.DefaultTransport = apmhttp.WrapRoundTripper(http.DefaultTransport)
+
+	// Periodically scrape and push prometheus managed metrics to the configured APM Server.
+	gatherer := apmprometheus.Wrap(prometheus.DefaultGatherer)
+	apm.DefaultTracer.RegisterMetricsGatherer(gatherer)
 
 	if err := Main(); err != nil {
 		logrus.Fatal(err)
